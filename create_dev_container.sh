@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Creates devcontainer config for few code languages to easily startup a devcontainer in vscode
+
 # Function to create a Python devcontainer
 create_python_devcontainer() {
     mkdir -p .devcontainer
@@ -7,6 +9,10 @@ create_python_devcontainer() {
 {
     "name": "Python DevContainer",
     "image": "mcr.microsoft.com/devcontainers/python:3",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=\${localWorkspaceFolder},target=/workspace,type=bind"
+    ],
     "customizations": {
         "vscode": {
             "extensions": ["ms-python.python"]
@@ -24,6 +30,10 @@ create_go_devcontainer() {
 {
     "name": "Go DevContainer",
     "image": "mcr.microsoft.com/devcontainers/go:latest",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=\${localWorkspaceFolder},target=/workspace,type=bind"
+    ],
     "customizations": {
         "vscode": {
             "extensions": ["golang.go"]
@@ -41,6 +51,10 @@ create_node_devcontainer() {
 {
     "name": "Node.js DevContainer",
     "image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=\${localWorkspaceFolder},target=/workspace,type=bind"
+    ],
     "customizations": {
         "vscode": {
             "extensions": ["dbaeumer.vscode-eslint"]
